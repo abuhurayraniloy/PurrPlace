@@ -1,0 +1,11 @@
+import dog from '/pet-01.jpeg';
+import cat from '/pet-02.jpg';
+import bird from '/pet-03.jpeg';
+import search from '/search.png';
+import arrow from '/arrow.png';
+import cross_icon from '/cross-icon.svg';
+import menu from '/menu.png';
+import logo from '/logo.png';
+import pin from '/pin.png';
+import stud1 from '/Stud_01.jpg';
+export {cat , dog, bird , search, arrow, cross_icon, menu, logo, pin , stud1};
