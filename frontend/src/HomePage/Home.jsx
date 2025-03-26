@@ -1,10 +1,12 @@
 import React from 'react'
 import HeroSection from '../Components/HeroSection'
+import SearchBar from '../Components/SearchBar'
 
 function Home() {
   return (
-    <div>
+    <div className='w-full  mx-auto flex flex-col '>
       <HeroSection />
+      <SearchBar />
     </div>
   )
 }
