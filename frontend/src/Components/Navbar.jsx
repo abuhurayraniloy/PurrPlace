@@ -103,7 +103,7 @@ function Navbar() {
           <a href="/lists" className="py-3">
             Room Lists
           </a>
-          <a href="/" className="py-3">
+          <a href="/cat-sitter" className="py-3">
             Cat Sitter
           </a>
           <a href="/" className="py-3">
