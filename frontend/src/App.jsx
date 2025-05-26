@@ -6,6 +6,7 @@ import Navbar from "./Components/Navbar";
 import AboutUs from "./Components/AboutUs";
 import ListPage from "./ListPage/ListPage";
 import SinglePost from './SinglePostPage/SinglePost';
+import Profile from './ProfilePage/Profile';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/lists" element={<ListPage />} />
           <Route path="/single-post" element={<SinglePost />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </Router>
