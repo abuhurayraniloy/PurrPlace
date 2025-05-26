@@ -4,6 +4,7 @@ import './index.css'
 import Home from "../src/HomePage/Home";
 import Footer from './Components/Footer'
 import Navbar from "./Components/Navbar";
+import Login from "./Authentication/Login"
 const App = () => {
   return (
     <>
@@ -11,6 +12,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login/>} />
         </Routes>
         <Footer />
       </Router>
