@@ -1,5 +1,4 @@
-import React from 'react'
-import { stud1 ,dog } from '../../public/Assets.jsx'
+import { stud1 } from '../../public/Assets.jsx'
 import { CgProfile } from 'react-icons/cg'
 function AboutUs() {
 return (
