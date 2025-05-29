@@ -37,7 +37,7 @@ function Profile() {
           <div className="flex items-center justify-between">
             <h1 className="font-light text-xl">My List</h1>
             <button className="px-6 py-3 bg-[#fece51] cursor-pointer border-none">
-              Create New Post
+              <a href="/new-post">Create New Post</a>
             </button>
           </div>
 

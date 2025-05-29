@@ -7,6 +7,7 @@ import AboutUs from "./Components/AboutUs";
 import ListPage from "./ListPage/ListPage";
 import SinglePost from './SinglePostPage/SinglePost';
 import Profile from './ProfilePage/Profile';
+import NewPost from './NewPostPage/NewPost';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/lists" element={<ListPage />} />
           <Route path="/single-post" element={<SinglePost />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/new-post" element={<NewPost />} />
         </Routes>
         <Footer />
       </Router>
