@@ -5,11 +5,11 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="h-full flex bg-[url('/bg.avif')]">
+    <div className="h-screen flex bg-[url('/bg.avif')]">
       {/* Form Section */}
       <div className="flex items-center justify-center m-auto top-0 left-0 right-0 bottom-0">
         <form className="flex flex-col gap-5 md:w-[300px] sm:w-full backdrop-blur-2xl">
-          <h1 className="text-2xl font-bold">Welcome back</h1>
+          <h1 className="text-2xl font-bold text-white bg-teal-600 m-1 p-3 self-center rounded-lg">Welcome back</h1>
           <input
             name="username"
             type="text"
@@ -52,7 +52,7 @@ function Login() {
           </button>
           <Link
             to="/register"
-            className="text-sm text-gray-500 border-b border-gray-400 w-max"
+            className="text-sm text-gray-300 border-b border-gray-400 w-max hover:text-gray-500 transition duration-200"
           >
             {"Don't"} have an account?
           </Link>

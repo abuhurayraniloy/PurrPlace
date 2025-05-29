@@ -5,7 +5,8 @@ import { CgProfile } from "react-icons/cg";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-  const user = true;
+  const user = false;
+
 
 
   return (
@@ -57,11 +58,11 @@ function Navbar() {
           </div>
         ) : (
           <>
-            <a href="/" className="py-2 px-4 border border-gray-300 rounded-md">
+            <a href="/login" className="py-2 px-4 border border-gray-300 rounded-md">
               Sign in
             </a>
             <a
-              href="/"
+              href="/register"
               className="py-2 px-4 bg-yellow-400 text-white rounded-md"
             >
               Sign up
@@ -99,10 +100,10 @@ function Navbar() {
           <a href="/" className="py-3">
             Agents
           </a>
-          <a href="/" className="py-3">
+          <a href="/login" className="py-3">
             Sign in
           </a>
-          <a href="/" className="py-3">
+          <a href="/register" className="py-3">
             Sign up
           </a>
         </div>
