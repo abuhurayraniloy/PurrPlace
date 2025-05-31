@@ -8,6 +8,7 @@ import ListPage from "./ListPage/ListPage";
 import SinglePost from './SinglePostPage/SinglePost';
 import Profile from './ProfilePage/Profile';
 import NewPost from './NewPostPage/NewPost';
+import UpdateProfile from './ProfileUpdatePage/UpdateProfile';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/single-post" element={<SinglePost />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/new-post" element={<NewPost />} />
+          <Route path="/update-profile" element={<UpdateProfile />} />
         </Routes>
         <Footer />
       </Router>

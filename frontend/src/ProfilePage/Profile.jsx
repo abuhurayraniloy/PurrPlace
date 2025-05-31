@@ -11,7 +11,7 @@ function Profile() {
           <div className="flex items-center justify-between">
             <h1 className="font-light text-xl">User Information</h1>
             <button className="px-6 py-3 bg-[#fece51] cursor-pointer border-none">
-              Update Profile
+              <a href="/update-profile">Update Profile</a>
             </button>
           </div>
 

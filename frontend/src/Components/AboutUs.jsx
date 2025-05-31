@@ -2,7 +2,7 @@ import { stud1 } from '../../public/Assets.jsx'
 import { CgProfile } from 'react-icons/cg'
 function AboutUs() {
 return (
-    <div className="p-6 bg-gradient-to-b from-slate-300 to-gray-100 shadow-md h-full">
+    <div className="p-6 h-full bg-gradient-to-b from-slate-300 to-gray-100 shadow-md">
         <h1 className="text-3xl font-bold font-serif mb-6 ml-15  ">About Us</h1>
         <div className="flex flex-wrap items-center  justify-center gap-8 mb-8">
             <div className="text-center">
@@ -27,9 +27,9 @@ return (
                 <p className="text-gray-600">Shahjalal University of Science and Technology (SUST)</p>
             </div>
         </div>
-        <div className='w-80% md:ml-15 md:mr-15 mb-8 sm:ml-0 sm:mr-0 bg-slate-300 sm:text-sm md:text-md lg:text-lg'>
-            <h2 className="text-2xl font-serif font-bold mb-4">Our Motto</h2>
-            <p className="text-gray-700 t text-center text-lg font-sans text-wrap sm:text-sm md:text-md lg:text-lg">
+        <div className='md:ml-15 md:mr-15 mb-8 sm:ml-0 sm:mr-0 bg-slate-300 sm:text-sm md:text-md lg:text-lg rounded-xl shadow-2xl'>
+            <h2 className="text-2xl ml-3 font-serif font-bold mb-4">Our Motto</h2>
+            <p className="text-gray-700 text-center m-3 text-lg font-sans text-wrap sm:text-sm md:text-md lg:text-lg">
             Our prime initiative a pet rental home service, offering pet owners a secure and convenient lodging solution while they travel. By connecting owners with trusted caretakers, it ensures pets receive quality care in a comfortable environment, while also creating earning opportunities for pet hotels and boarding providers. The goal is to build a reliable network that benefits both pets and their owners, promoting stress-free travel and professional pet care.
             </p>
         </div>
