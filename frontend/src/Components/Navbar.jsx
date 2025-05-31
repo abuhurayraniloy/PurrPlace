@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
+import { AuthContext } from "../Context/AuthContext";
 
 function Navbar() {
+  const{currentUser} = useContext(AuthContext);
   const [open, setOpen] = useState(false);
-  const user = true;
 
   return (
-    <nav className="h-20 flex justify-between items-center px-10 bg-gradient-to-b from-slate-300 to-gray-100 shadow-md">
+    <nav className="h-20 flex justify-between items-center px-5 bg-gradient-to-b from-slate-300 to-gray-100 shadow-md">
       {/* Left Section */}
       <div className="flex items-center gap-4   ">
         <a href="/" className="flex items-center gap-2 font-bold text-lg">
@@ -17,7 +18,6 @@ function Navbar() {
           </span>
         </a>
       </div>
-
       {/* Center Section */}
       <div className="hidden sm:flex md:text-md lg:text-lg  md:gap-8 justify-center  flex-grow">
         <a href="/" className="transition hover:scale-105">
@@ -33,17 +33,21 @@ function Navbar() {
           Cat Sitter
         </a>
       </div>
+
       <div className="flex items-center gap-6 ">
-        {user ? (
+        {currentUser ? (
           <div className="flex items-center gap-5 justify-around font-bold ">
             <div className=" flex items-center gap-5 ">
-              {/* <img
-              src=""
-              alt="User"
-              className="w-10 h-10 rounded-full object-cover mr-4"
-            /> */}
-              <CgProfile className="w-9 h-10 md:w-8 md:h-9 hidden sm:inline" />
-              <span className="hidden sm:inline ">Niloy </span>
+            {currentUser.avatar ? (
+              <img
+                src={currentUser.userInfo.avatar}
+                alt="User"
+                className="w-10 h-10 rounded-full object-cover mr-4"
+              />
+            ) : (
+              <CgProfile className="w-12 h-12 md:w-10 md:h-12 hidden sm:inline mr-4 md:mr-0" />
+            )}
+            <span className="hidden sm:inline">{currentUser.userInfo.username} </span>
             </div>
             <Link
               to="/profile"
@@ -55,13 +59,16 @@ function Navbar() {
               Profile
             </Link>
           </div>
-        ) : ( 
+        ) : (
           <>
-            <a href="/" className="py-2 px-4 border border-gray-300 rounded-md">
+            <a
+              href="/login"
+              className="py-2 px-4 border border-gray-300 rounded-md"
+            >
               Sign in
             </a>
             <a
-              href="/"
+              href="/register"
               className="py-2 px-4 bg-yellow-400 text-white rounded-md"
             >
               Sign up
@@ -105,19 +112,22 @@ function Navbar() {
           <a href="/cat-sitter" className="py-3">
             Cat Sitter
           </a>
-          {user?
-          <a href="/profile" className="py-3">
-            Profile
-          </a> : <>
-            <a href="/sing-in" className="py-3">
-            Sign-in
-          </a>
-          <a href="/sign-up" className="py-3">
-            Sign-up
-          </a> </>
-          }
-
-          
+          {currentUser ? (
+            <>
+              <a href="/profile" className="py-3">
+                Profile
+              </a>
+            </>
+          ) : (
+            <>
+              <a href="/sing-in" className="py-3">
+                Sign-in
+              </a>
+              <a href="/sign-up" className="py-3">
+                Sign-up
+              </a>{" "}
+            </>
+          )}
         </div>
       </div>
     </nav>

@@ -1,33 +1,72 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../src/HomePage/Home";
-import Footer from './Components/Footer'
+import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 import AboutUs from "./Components/AboutUs";
 import ListPage from "./ListPage/ListPage";
-import SinglePost from './SinglePostPage/SinglePost';
-import Profile from './ProfilePage/Profile';
-import NewPost from './NewPostPage/NewPost';
-import UpdateProfile from './ProfileUpdatePage/UpdateProfile';
+import SinglePost from "./SinglePostPage/SinglePost";
+import Profile from "./ProfilePage/Profile";
+import UpdateProfile from "./ProfileUpdatePage/UpdateProfile";
+import Login from "./Authentication/Login";
+import Register from "./Authentication/Registration";
+import { Layout,RequireAuth } from "./PathRoutes/Routes";
+import NewPostPage from "./NewPostPage/NewPost";
 
 const App = () => {
-  return (
-    <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/lists" element={<ListPage />} />
-          <Route path="/single-post" element={<SinglePost />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/new-post" element={<NewPost />} />
-          <Route path="/update-profile" element={<UpdateProfile />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/lists",
+          element: <ListPage />,
+        },
+        {
+          path: "/single-post",
+          element: <SinglePost />,
+        },
+        {
+          path: "/about-us",
+          element: <AboutUs />,
+        },
+
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+      ],
+    },
+    {
+      path: "/",
+      element: <RequireAuth />,
+      children: [
+        {
+          path: "/profile",
+          element: <Profile />,
+        },
+        {
+          path: "/profile/update",
+          element: <UpdateProfile />,
+        },
+        {
+          path: "/add",
+          element: <NewPostPage />,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 };
 
 export default App;

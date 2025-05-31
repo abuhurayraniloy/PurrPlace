@@ -163,7 +163,7 @@ function NewPostPage() {
               type="submit"
               className="w-[30%] rounded-md border-none bg-teal-600 text-white font-bold cursor-pointer py-3 mt-3"
             >
-              Add
+              <a href="/profile">Add</a>
             </button>
           </form>
         </div>
