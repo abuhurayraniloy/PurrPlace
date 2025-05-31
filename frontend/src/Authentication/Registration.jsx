@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +10,7 @@ function Register() {
     confirm_password: "",
   });
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -19,12 +20,13 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      !form.username ||
-      !form.email ||
-      !form.password ||
-      !form.confirm_password
-    ) {
+    setIsLoading(true);
+    const username = form.username;
+    const password = form.password;
+    const email = form.email;
+    const confirm_password = form.confirm_password;
+    // console.log(username,password,email);
+    if (!username || !email || !password || !confirm_password) {
       setError("All fields are required");
       return;
     }
@@ -32,10 +34,19 @@ function Register() {
       setError("Passwords do not match");
       return;
     }
-    // Call your API here, e.g.:
-    // await api.register(form);
-    // On success:
-    navigate("/login");
+    try {
+      const res = await axios.post("http://localhost:8800/api/auth/register", {
+        username,
+        email,
+        password,
+      });
+      console.log(res.data);
+      navigate("/login");
+    } catch (err) {
+      setError(err.response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -43,13 +54,14 @@ function Register() {
       {/* Form Section */}
       <div className="flex-[3] h-full flex items-center justify-center">
         <form className="flex flex-col gap-5 w-[300px]" onSubmit={handleSubmit}>
-          <h1 className="text-2xl font-bold text-white bg-teal-600 m-1 p-3 self-center rounded-lg">Create an Account</h1>
+          <h1 className="text-2xl font-bold text-white bg-teal-600 m-1 p-3 self-center rounded-lg">
+            Create an Account
+          </h1>
           <input
             name="username"
             type="text"
             placeholder="Username"
             className="p-5 border border-gray-400 rounded-md bg-white"
-            value={form.username}
             onChange={handleChange}
           />
           <input
@@ -57,7 +69,6 @@ function Register() {
             type="text"
             placeholder="Email"
             className="p-5 border border-gray-400 rounded-md bg-white"
-            value={form.email}
             onChange={handleChange}
           />
           <input
@@ -65,7 +76,6 @@ function Register() {
             type="password"
             placeholder="Password"
             className="p-5 border border-gray-400 rounded-md bg-white"
-            value={form.password}
             onChange={handleChange}
           />
           <input
@@ -73,12 +83,33 @@ function Register() {
             type="password"
             placeholder="Confirm Password"
             className="p-5 border border-gray-400 rounded-md bg-white"
-            value={form.confirm_password}
             onChange={handleChange}
           />
           {/* Password match checker message */}
-          {error && (
-            <span className="text-red-500 text-sm">{error}</span>
+          {error && <span className="text-red-500 text-sm">{error}</span>}
+          {isLoading && (
+            <div className="fixed inset-0 bg-opacity-40 flex items-center justify-center z-50">
+              <svg
+                className="animate-spin h-26 w-26 text-black"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                ></path>
+              </svg>
+            </div>
           )}
           <button
             className="p-5 mb-10 rounded-md border-none bg-teal-600 text-white font-bold cursor-pointer disabled:bg-[#BED9D8] disabled:cursor-not-allowed"
@@ -86,7 +117,8 @@ function Register() {
               !form.username ||
               !form.email ||
               !form.password ||
-              !form.confirm_password
+              !form.confirm_password ||
+              isLoading
             }
             type="submit"
           >
