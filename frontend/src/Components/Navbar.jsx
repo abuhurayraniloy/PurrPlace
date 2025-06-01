@@ -4,7 +4,7 @@ import { CgProfile } from "react-icons/cg";
 import { AuthContext } from "../Context/AuthContext";
 
 function Navbar() {
-  const{currentUser} = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
 
   return (
@@ -38,16 +38,18 @@ function Navbar() {
         {currentUser ? (
           <div className="flex items-center gap-5 justify-around font-bold ">
             <div className=" flex items-center gap-5 ">
-            {currentUser.avatar ? (
               <img
-                src={currentUser.userInfo.avatar}
+                src={
+                  currentUser.avatar || (
+                    <CgProfile className="w-12 h-12 md:w-10 md:h-12 hidden sm:inline" />
+                  )
+                }
                 alt="User"
-                className="w-10 h-10 rounded-full object-cover mr-4"
+                className="w-10 h-10 rounded-full object-cover"
               />
-            ) : (
-              <CgProfile className="w-12 h-12 md:w-10 md:h-12 hidden sm:inline mr-4 md:mr-0" />
-            )}
-            <span className="hidden sm:inline">{currentUser.userInfo.username} </span>
+              <span className="hidden sm:inline">
+                {currentUser.username}{" "}
+              </span>
             </div>
             <Link
               to="/profile"

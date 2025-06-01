@@ -1,8 +1,5 @@
-import React from "react";
-import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../src/HomePage/Home";
-import Footer from "./Components/Footer";
-import Navbar from "./Components/Navbar";
 import AboutUs from "./Components/AboutUs";
 import ListPage from "./ListPage/ListPage";
 import SinglePost from "./SinglePostPage/SinglePost";
@@ -35,7 +32,6 @@ const App = () => {
           path: "/about-us",
           element: <AboutUs />,
         },
-
         {
           path: "/login",
           element: <Login />,
@@ -65,7 +61,7 @@ const App = () => {
       ],
     },
   ]);
-
+ 
   return <RouterProvider router={router} />;
 };
 

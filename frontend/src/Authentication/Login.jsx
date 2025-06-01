@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import apiRequest from '../lib/apiRequest'
 import { AuthContext } from "../Context/AuthContext";
@@ -28,14 +27,14 @@ function Login() {
     console.log(username, password);
     if (!username || !password) {
       setError("All fields are required");
-      return;
+      return setIsLoading(false);
     }
     try {
       const res = await apiRequest.post("/auth/login", {
         username,
         password,
       });
-      // console.log(res)
+      console.log(res)
       // localStorage.setItem("user", JSON.stringify(res.data))
       updateUser(res.data)
       navigate("/");

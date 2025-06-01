@@ -10,6 +10,8 @@ import { CgProfile } from "react-icons/cg";
 function Profile() {
   const { updateUser, currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const user = currentUser;
+
 
   const handleLogout = async () => {
     try {
@@ -17,7 +19,7 @@ function Profile() {
       updateUser(null);
       navigate("/");
     } catch (err) {
-      console.log(err);
+      console.log(err.res.message);
     }
   };
   return (
@@ -39,21 +41,19 @@ function Profile() {
             <div className="flex flex-col self-center bg-gray-200 rounded-2xl md:w-100 sm:w-fit p-3 sm:p-5 h-50 drop-shadow-lg shadow-lg items-center gap-5 ">
               <span className="flex text-lg  items-center gap-5">
                 Avatar:
-                {currentUser.avatar ? (
+                {/* user.avatar || */}
                   <img
-                    src={currentUser.avatar}
+                    src={ user.avatar ||(<CgProfile className="w-12 h-12 md:w-10 md:h-12 hidden sm:inline" />)}
                     alt="User"
                     className="w-10 h-10 rounded-full object-cover"
                   />
-                ) : (
-                  <CgProfile className="w-12 h-12 md:w-10 md:h-12 hidden sm:inline" />
-                )}
+                  
               </span>
               <span className="flex text-lg items-center gap-5">
-                Username: <b>{currentUser.userInfo.username} </b>
+                Username: <b>{user?.username || ''} </b>
               </span>
               <span className="flex text-lg items-center gap-5">
-                E-mail: <b>{currentUser.userInfo.email}</b>
+                E-mail: <b>{user?.email || ''}</b>
               </span>
               <button
                 className="bg-[#fece51] w-full p-2 md:m-8 sm:m-15 rounded-xl shadow-xl hover:bg-[#9f8c5ce6]"
